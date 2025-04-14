@@ -1,0 +1,252 @@
+/* Force dark theme background */
+body {
+    background-color: #121212 !important;
+    color: white !important;
+}
+
+/* General Card Styling */
+.card {
+    background-color: #1e1e1e !important;
+    color: white !important;
+    border: 1px solid #444 !important;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Headers inside Cards */
+.card-header {
+    background-color: #333 !important;
+    color: white !important;
+    font-weight: bold !important;
+    text-align: center;
+}
+
+/* Temperature Button */
+.temp-btn {
+    background-color: navy !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* System Status Button */
+.status-btn {
+    background-color: purple !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* Lights ON Button */
+.lights-btn.on {
+    background-color: green !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* Lights OFF Button */
+.lights-btn.off {
+    background-color: red !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* Voice Command Button */
+.voice-command-btn {
+    background-color: purple !important;
+    color: white !important;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Mic Icon (Inside Voice Button) */
+.mic-icon {
+    background-color: white !important;
+    color: purple !important;
+    border-radius: 50%;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+/* Sidebar (Dashboard, Settings, Logs) */
+.sidebar {
+    background-color: #222 !important;
+    color: white !important;
+    padding: 20px !important;
+}
+
+/* Sidebar Links */
+.sidebar a {
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+}
+
+.sidebar a:hover {
+    color: purple !important;
+}
+
+body {
+    background-color: green !important;
+}
+/* Dark background */
+body {
+    background-color: #121212 !important;
+    color: white;
+}
+
+/* Card backgrounds */
+.card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+}
+
+/* Header colors */
+.card-header {
+    font-weight: bold;
+}
+
+/* Lights Button (Gold) */
+.bg-warning {
+    background-color: #ffcc00 !important;
+    color: black !important;
+}
+
+/* Temperature Button (Royal Blue) */
+.bg-primary {
+    background-color: #4169E1 !important;
+    color: white !important;
+}
+
+/* System Status Button (Emerald Green) */
+.bg-success {
+    background-color: #2ecc71 !important;
+    color: white !important;
+}
+
+/* Voice Command Button (Vibrant Magenta) */
+#voice-command {
+    background-color: #e91e63 !important;
+    color: white !important;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Light ON/OFF buttons */
+#light-on {
+    background-color: green !important;
+    color: white !important;
+    border-radius: 5px;
+}
+
+#light-off {
+    background-color: red !important;
+    color: white !important;
+    border-radius: 5px;
+}
+/* Main layout styling */
+.container-fluid {
+    display: flex;
+}
+
+/* Sidebar (Dashboard, Settings, Logs) */
+.sidebar {
+    width: 250px;  /* Set fixed width */
+    background-color: #222;
+    height: 100vh; /* Full screen height */
+    padding: 20px;
+}
+
+/* Main Dashboard Content */
+.main-content {
+    flex-grow: 1; /* Take remaining space */
+    padding: 20px;
+}
+
+/* Cards should be in a row */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Each card should have equal width */
+.card {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+}
+
+.btn-purple {
+    background-color: #6f42c1;
+    color: white;
+}
+.btn-purple:hover {
+    background-color: #5936a0;
+    color: white;
+}
+
+.bg-purple {
+    background-color: #6f42c1 !important;
+}
+/* Neat card layout */
+.card {
+    margin: 10px; /* Space between cards */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+  }
+  
+  .card-text {
+    font-size: 1.2rem;
+  }
+  
+  /* Ensuring cards are the same size and neat */
+  .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .card-deck .card {
+    width: 23%; /* Makes sure the cards are evenly sized */
+  }
+  
+  /* Centering content without scrolling */
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  body {
+    background-color: #333; /* Dark theme background */
+    color: white; /* Text color */
+  }
+  
+  /* Styling buttons inside cards */
+  .card button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .card button:hover {
+    background-color: #0056b3;
+  }
+
+  
