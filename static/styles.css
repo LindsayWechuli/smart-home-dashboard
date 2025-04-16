@@ -249,4 +249,16 @@ body {
     background-color: #0056b3;
   }
 
+  .card {
+    min-height: 80px;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+  }
   

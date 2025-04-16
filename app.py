@@ -64,6 +64,14 @@ def get_schedules():
         })
     return jsonify(result)
 
+@app.route('/lock/<state>', methods=['POST'])
+def control_lock(state):
+    if state not in ['lock', 'unlock']:
+        return jsonify({"error": "Invalid lock state"}), 400
+
+    print(f"{state.capitalize()}ing the door...")
+    return jsonify({"message": f"Door {state}ed!"})
+
 
 # ✅ Run Flask App
 if __name__ == '__main__':

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Smart Home Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Bootstrap & FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -38,16 +38,6 @@
         .sidebar .card:hover {
             background-color: #0b0117;
             cursor: pointer;
-        }
-        .sidebar .card-body {
-            padding: 8px;
-        }
-        .sidebar i {
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-        .sidebar span {
-            font-size: 14px;
         }
         .main-content {
             margin-left: 250px;
@@ -85,42 +75,52 @@
 
 <!-- Sidebar -->
 <div class="sidebar">
-    <div class="card">
-        <div class="card-body text-center" style="display: flex; flex-direction: column; align-items: center;">
-            <i class="fas fa-user"></i>
-            <span>Profile</span>
+    <!-- Profile -->
+    <div class="card" data-bs-toggle="modal" data-bs-target="#profileModal">
+        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+            <i class="fas fa-user fa-lg"></i>
+            <span style="font-size: 14px;">Profile</span>
             <small style="font-size: 12px; color: hotpink;">Wechuli</small>
         </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <i class="fas fa-heartbeat"></i><br>
-            <span>Device Health</span>
-        </div>
-    </div>
-    <div class="card" data-bs-toggle="modal" data-bs-target="#deviceSchedulerModal">
-        <div class="card-body">
-            <i class="fas fa-calendar-alt"></i><br>
-            <span>Device Scheduler</span>
+
+    <!-- Device Health -->
+    <div class="card" data-bs-toggle="modal" data-bs-target="#healthModal">
+        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+            <i class="fas fa-heartbeat fa-lg"></i>
+            <span style="font-size: 14px;">Device Health</span>
         </div>
     </div>
 
-<div class="card" data-bs-toggle="modal" data-bs-target="#energyMonitoringModal">
-    <div class="card-body">
-        <i class="fas fa-bolt"></i><br>
-        <span>Energy Monitoring</span>
-    </div>
-</div>
- <div class="card">
-        <div class="card-body">
-            <i class="fas fa-lightbulb"></i><br>
-            <span>Quick Actions</span>
+    <!-- Device Scheduler -->
+    <div class="card" data-bs-toggle="modal" data-bs-target="#deviceSchedulerModal">
+        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+            <i class="fas fa-calendar-alt fa-lg"></i>
+            <span style="font-size: 14px;">Device Scheduler</span>
         </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <i class="fas fa-cogs"></i><br>
-            <span>Settings</span>
+
+    <!-- Energy Monitoring -->
+    <div class="card" data-bs-toggle="modal" data-bs-target="#energyMonitoringModal">
+        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+            <i class="fas fa-bolt fa-lg"></i>
+            <span style="font-size: 14px;">Energy Monitoring</span>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="card" data-bs-toggle="modal" data-bs-target="#quickModal">
+        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+            <i class="fas fa-lightbulb fa-lg"></i>
+            <span style="font-size: 14px;">Quick Actions</span>
+        </div>
+    </div>
+
+    <!-- Settings -->
+    <div class="card" data-bs-toggle="modal" data-bs-target="#settingsModal">
+        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+            <i class="fas fa-cogs fa-lg"></i>
+            <span style="font-size: 14px;">Settings</span>
         </div>
     </div>
 </div>
@@ -168,24 +168,33 @@
             <div class="card bg-dark text-white text-center">
                 <div class="card-header bg-secondary text-white">Voice Command</div>
                 <div class="card-body">
-                    <button id="voice-command" class="btn btn-secondary text-white">🎤 Voice Command</button>
+                    <button id="voice-command" class="btn btn-secondary text-white">🎤 Start Listening</button>
                 </div>
             </div>
         </div>
 
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">Smart Lock</div>
+            <div class="card-body">
+              <h5 class="card-title" id="lock-status">LOCKED</h5>
+              <button id="lockBtn" class="btn btn-danger me-2">🔒 Lock</button>
+              <button id="unlockBtn" class="btn btn-success">🔓 Unlock</button>
+            </div>
+          </div>
+          
         <!-- View Schedules Card -->
         <div class="col">
-             <div class="card bg-dark text-white text-center">
-                  <div class="card-header bg-success">Scheduled Devices</div>
-                  <div class="card-body">
-                       <button class="btn btn-success mt-2" id="viewSchedulesBtn">View Scheduled Devices</button>
-                   </div>
-               </div>
-           </div>
+            <div class="card bg-dark text-white text-center">
+                <div class="card-header bg-success">Scheduled Devices</div>
+                <div class="card-body">
+                    <button class="btn btn-success mt-2" id="viewSchedulesBtn">View Scheduled Devices</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-
-        <!-- Inside .dashboard-container -->
+<!-- 🌟 MODALS BELOW -->
 
 <!-- Energy Monitoring Modal -->
 <div class="modal fade" id="energyMonitoringModal" tabindex="-1" aria-labelledby="energyMonitoringModalLabel" aria-hidden="true">
@@ -211,7 +220,7 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-         <form id="schedulerForm" method="POST" action="/schedule-device">
+        <form id="schedulerForm" method="POST" action="/schedule-device">
           <div class="mb-3">
             <label for="deviceName" class="form-label">Device Name</label>
             <input type="text" class="form-control" id="deviceName" placeholder="e.g., Lights">
@@ -237,24 +246,96 @@
     </div>
   </div>
 </div>
+
 <!-- View Schedules Modal -->
 <div class="modal fade" id="viewSchedulesModal" tabindex="-1" aria-labelledby="viewSchedulesModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content bg-dark text-white">
-        <div class="modal-header">
-          <h5 class="modal-title" id="viewSchedulesModalLabel">Scheduled Devices</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <ul id="scheduleList" class="list-group text-dark">
-            <!-- Items will be added dynamically here -->
-          </ul>
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewSchedulesModalLabel">Scheduled Devices</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul id="scheduleList" class="list-group text-dark">
+          <!-- Dynamically populated -->
+        </ul>
       </div>
     </div>
   </div>
-  
+</div>
 
+<!-- Settings Modal -->
+<div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>👤 Profile Name:</strong> Wechuli</p>
+          <p><strong>🔔 Notifications:</strong> Enabled</p>
+          <p><strong>🎨 Theme:</strong> Dark Mode</p>
+          <p><strong> Password:</strong> Wechuli@2004</p>
+          <hr>
+          <p style="font-size: 14px;">These are placeholder settings. Real features coming soon! 😉</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Profile Modal -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="profileModalLabel">Profile Info</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Name: Wechuli<br>
+        Role: Smart Home Admin<br>
+        Email: liwechuli@gmail.com
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Device Health Modal -->
+<div class="modal fade" id="healthModal" tabindex="-1" aria-labelledby="healthModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="healthModalLabel">Device Health Status</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        All connected devices are operating normally ✔️
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Quick Actions Modal -->
+<div class="modal fade" id="quickModal" tabindex="-1" aria-labelledby="quickModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="quickModalLabel">Quick Actions</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        🔹 Turn off all lights<br>
+        🔹 Lock all doors<br>
+        🔹 Activate night mode<br><br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+</body>
+</html>
