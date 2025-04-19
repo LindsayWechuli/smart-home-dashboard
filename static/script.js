@@ -1,18 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ script.js is running!");
 
-    // 🌡️ Temperature
-    const tempBtn = document.querySelector('[onclick="getTemperature()"]');
-    if (tempBtn) {
-        tempBtn.addEventListener("click", function () {
-            fetch('/temperature')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById("temperature").textContent = `${data.temperature} °C`;
-                })
-                .catch(error => console.error("Error fetching temperature:", error));
-        });
-    }
+
 
     // ✅ System Status
     const checkStatusBtn = document.getElementById("checkStatus");
@@ -29,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
             fetch("/get-schedules")
                 .then(response => response.json())
                 .then(data => {
+                    console.log("📦 Schedule data:", data);
                     const list = document.getElementById("scheduleList");
                     list.innerHTML = ""; // Clear previous list
 
@@ -41,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         data.forEach(schedule => {
                             const li = document.createElement("li");
                             li.className = "list-group-item";
-                            li.textContent = `${schedule.device} → ${schedule.action.toUpperCase()} at ${schedule.time}`;
+                            li.textContent = `${schedule.device_name} → ${schedule.action.toUpperCase()} at ${schedule.schedule_time}`;
                             list.appendChild(li);
                         });
                     }
@@ -113,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const voiceButton = document.getElementById("voice-command");
     if (voiceButton) {
         voiceButton.addEventListener("click", function () {
-            alert("Voice activation feature coming soon! 🎤");
+            alert("Voice activated! 🎤");
         });
     }
 
@@ -218,5 +208,120 @@ document.addEventListener("DOMContentLoaded", function () {
             voiceButton.textContent = "Voice Unsupported 😢";
         }
     }
+
+      // 🚨 Alarm System Controls
+  const alarmStatus = document.getElementById("alarmStatus");
+  const armBtn = document.getElementById("armAlarm");
+  const disarmBtn = document.getElementById("disarmAlarm");
+
+  let isArmed = false;
+
+  if (armBtn) {
+    armBtn.addEventListener("click", () => {
+      isArmed = true;
+      alarmStatus.textContent = "Armed";
+      alarmStatus.classList.remove("text-warning");
+      alarmStatus.classList.add("text-danger");
+      alert("🚨 Security alarm is now armed!");
+    });
+  }
+
+  if (disarmBtn) {
+    disarmBtn.addEventListener("click", () => {
+      isArmed = false;
+      alarmStatus.textContent = "Disarmed";
+      alarmStatus.classList.remove("text-danger");
+      alarmStatus.classList.add("text-warning");
+      alert("🔓 Alarm disarmed.");
+    });
+  }
+
+  // Optional test alarm trigger (simulated intruder)
+  setTimeout(() => {
+    if (isArmed) {
+      alert("⚠️ INTRUDER ALERT! The alarm is going off!");
+    }
+  }, 10000);
+
+
+  function lockBedroom(action) {
+    const statusElement = document.getElementById("bedroom-lock-status");
+
+    fetch(`/lock-bedroom/${action}`, {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Update the UI based on the response
+        if (action === "lock") {
+            statusElement.textContent = "LOCKED";
+            statusElement.style.color = "red";
+        } else if (action === "unlock") {
+            statusElement.textContent = "UNLOCKED";
+            statusElement.style.color = "green";
+        }
+        alert(data.message); // Show the backend message (optional)
+    })
+    .catch(error => {
+        console.error("Error locking bedroom:", error);
+        alert("Failed to update bedroom lock.");
+    });
+}
+
+
+    // Ensure elements are properly referenced
+    const cameraBtn = document.getElementById("cameraBtn");
+    const cameraModal = new bootstrap.Modal(document.getElementById("cameraModal"));
+    const cameraStatusText = document.getElementById("cameraStatus");
+    const toggleCameraBtn = document.getElementById("toggleCameraBtn");
+  
+    let cameraOn = false;
+  
+    // Check if all elements exist to avoid errors
+    if (cameraBtn && cameraModal && cameraStatusText && toggleCameraBtn) {
+  
+      // Camera button opens the modal
+      cameraBtn.addEventListener("click", function() {
+        cameraModal.show();
+        updateCameraModal();
+      });
+  
+      // Toggle camera state on button click
+      toggleCameraBtn.addEventListener("click", function() {
+        cameraOn = !cameraOn;
+        updateCameraModal();
+      });
+  
+      // Update modal content based on camera state
+      function updateCameraModal() {
+        if (cameraOn) {
+          cameraStatusText.innerText = "on";
+          toggleCameraBtn.innerText = "Turn Camera Off";
+        } else {
+          cameraStatusText.innerText = "off";
+          toggleCameraBtn.innerText = "Turn Camera On";
+        }
+      }
+    } else {
+      console.error("Some elements are missing in the DOM. Please check your HTML.");
+    }
+
+ // 🌡️ Temperature fetching
+function getTemperature() {
+    fetch('/temperature')
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then(data => {
+        document.getElementById('temperature').textContent = `${data.temperature} °C`;
+      })
+      .catch(err => console.error('Error fetching temperature:', err));
+}
+
+const tempBtn = document.getElementById('tempBtn');
+if (tempBtn) {
+  tempBtn.addEventListener('click', getTemperature);
+}
 
 });

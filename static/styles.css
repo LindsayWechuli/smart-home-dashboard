@@ -162,9 +162,13 @@ body {
 
 /* Main Dashboard Content */
 .main-content {
-    flex-grow: 1; /* Take remaining space */
+    margin-left: 250px;
     padding: 20px;
+    width: calc(100% - 250px);
+    height: 100vh;
+    overflow-y: auto;
 }
+
 
 /* Cards should be in a row */
 .row {
@@ -262,3 +266,30 @@ body {
     padding: 10px;
   }
   
+  
+/* Card Body - Align buttons inline */
+.card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Adjust the size of the buttons */
+.card-body button {
+    font-size: 14px; /* Smaller font size */
+    padding: 8px 12px; /* Smaller padding */
+    margin-right: 10px; /* Space between buttons */
+}
+
+/* Align buttons in Bedroom Lock section */
+.card-body button:last-child {
+    margin-right: 0; /* No margin for the last button */
+}
+
+/* Align 'Scheduled Devices' button in the same way */
+#viewSchedulesBtn {
+    display: inline-block;
+    font-size: 14px;
+    padding: 8px 12px;
+}
+

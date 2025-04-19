@@ -70,58 +70,84 @@
         }
     </style>
 </head>
-
+ 
 <body>
 
+    
+
 <!-- Sidebar -->
-<div class="sidebar">
-    <!-- Profile -->
-    <div class="card" data-bs-toggle="modal" data-bs-target="#profileModal">
-        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-            <i class="fas fa-user fa-lg"></i>
-            <span style="font-size: 14px;">Profile</span>
-            <small style="font-size: 12px; color: hotpink;">Wechuli</small>
+<div class="sidebar d-flex flex-column justify-content-between">
+    <div>
+        <!-- Profile -->
+        <div class="card" data-bs-toggle="modal" data-bs-target="#profileModal">
+            <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                <i class="fas fa-user fa-lg"></i>
+                <span style="font-size: 14px;">Profile</span>
+                <small style="font-size: 12px; color: hotpink;">Wechuli</small>
+            </div>
+        </div>
+
+        <!-- Device Health -->
+        <div class="card" data-bs-toggle="modal" data-bs-target="#healthModal">
+            <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                <i class="fas fa-heartbeat fa-lg"></i>
+                <span style="font-size: 14px;">Device Health</span>
+            </div>
+        </div>
+
+        <!-- Device Scheduler -->
+        <div class="card" data-bs-toggle="modal" data-bs-target="#deviceSchedulerModal">
+            <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                <i class="fas fa-calendar-alt fa-lg"></i>
+                <span style="font-size: 14px;">Device Scheduler</span>
+            </div>
+        </div>
+
+        <!-- Energy Monitoring -->
+        <div class="card" data-bs-toggle="modal" data-bs-target="#energyMonitoringModal">
+            <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                <i class="fas fa-bolt fa-lg"></i>
+                <span style="font-size: 14px;">Energy Monitoring</span>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card" data-bs-toggle="modal" data-bs-target="#quickModal">
+            <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                <i class="fas fa-lightbulb fa-lg"></i>
+                <span style="font-size: 14px;">Quick Actions</span>
+            </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="card" data-bs-toggle="modal" data-bs-target="#settingsModal">
+            <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                <i class="fas fa-cogs fa-lg"></i>
+                <span style="font-size: 14px;">Settings</span>
+            </div>
         </div>
     </div>
 
-    <!-- Device Health -->
-    <div class="card" data-bs-toggle="modal" data-bs-target="#healthModal">
-        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-            <i class="fas fa-heartbeat fa-lg"></i>
-            <span style="font-size: 14px;">Device Health</span>
+        <!-- Alarm -->
+        <div class="card" data-bs-toggle="modal" data-bs-target="#alarmModal">
+            <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                <i class="fas fa-bell fa-lg"></i>
+                <span style="font-size: 14px;">Alarm</span>
+            </div>
         </div>
-    </div>
+        
+        <!-- Camera Button in Sidebar -->
+        <li class="nav-item">
+          <button class="nav-link" id="cameraBtn">
+            <i class="fas fa-camera"></i> Camera
+          </button>
+        </li>
 
-    <!-- Device Scheduler -->
-    <div class="card" data-bs-toggle="modal" data-bs-target="#deviceSchedulerModal">
-        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-            <i class="fas fa-calendar-alt fa-lg"></i>
-            <span style="font-size: 14px;">Device Scheduler</span>
-        </div>
-    </div>
-
-    <!-- Energy Monitoring -->
-    <div class="card" data-bs-toggle="modal" data-bs-target="#energyMonitoringModal">
-        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-            <i class="fas fa-bolt fa-lg"></i>
-            <span style="font-size: 14px;">Energy Monitoring</span>
-        </div>
-    </div>
-
-    <!-- Quick Actions -->
-    <div class="card" data-bs-toggle="modal" data-bs-target="#quickModal">
-        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-            <i class="fas fa-lightbulb fa-lg"></i>
-            <span style="font-size: 14px;">Quick Actions</span>
-        </div>
-    </div>
-
-    <!-- Settings -->
-    <div class="card" data-bs-toggle="modal" data-bs-target="#settingsModal">
-        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-            <i class="fas fa-cogs fa-lg"></i>
-            <span style="font-size: 14px;">Settings</span>
-        </div>
+    <!-- 🔒 Cute Little Logout Button at Bottom -->
+    <div class="text-center mt-3">
+        <a href="/logout" class="btn btn-sm btn-outline-light" style="font-size: 12px; padding: 4px 8px;" data-bs-toggle="tooltip" title="Logout">
+            <i class="fas fa-sign-out-alt"></i>
+        </a>
     </div>
 </div>
 
@@ -129,16 +155,18 @@
 <div class="main-content">
     <h1 class="text-center my-4">Smart Home Dashboard</h1>
     <div class="dashboard-container">
-        <!-- Temperature Card -->
+        <!-- Updated Temperature Card -->
         <div class="col">
-            <div class="card bg-dark text-white text-center">
-                <div class="card-header bg-primary">Temperature</div>
-                <div class="card-body">
-                    <h4 id="temperature">Loading...</h4>
-                    <button class="btn btn-primary mt-2" onclick="getTemperature()">Refresh</button>
-                </div>
+          <div class="card bg-dark text-white text-center">
+            <div class="card-header bg-primary">Temperature</div>
+            <div class="card-body">
+              <h4 id="temperature">Loading...</h4>
+              <!-- Notice: id="tempBtn" and no onclick attribute -->
+              <button id="tempBtn" class="btn btn-primary mt-2">Refresh</button>
             </div>
+          </div>
         </div>
+  
 
         <!-- Lights Card -->
         <div class="col">
@@ -191,9 +219,26 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
+        <p style="color:rgb(24, 4, 4);">Logged in as: {{ session['role'] }}</p>
+        <!-- Only show this if role is admin -->
+        {% if role == 'admin' %}
+        <div class="col">
+          <div class="card bg-dark text-white text-center">
+            <div class="card-header bg-danger">Bedroom Lock</div>
+            <div class="card-body">
+                <h5 class="card-title" id="bedroom-lock-status">LOCKED</h5>
+                <button class="btn btn-danger me-2" onclick="lockBedroom('lock')">🔒 Lock</button>
+                <button class="btn btn-success" onclick="lockBedroom('unlock')">🔓 Unlock</button>         
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    </div>
+
+
+    
 <!-- 🌟 MODALS BELOW -->
 
 <!-- Energy Monitoring Modal -->
@@ -274,7 +319,7 @@
         </div>
         <div class="modal-body">
           <p><strong>👤 Profile Name:</strong> Wechuli</p>
-          <p><strong>🔔 Notifications:</strong> Enabled</p>
+          <p><strong>🔔 Notifications:</strong> On</p>
           <p><strong>🎨 Theme:</strong> Dark Mode</p>
           <p><strong> Password:</strong> Wechuli@2004</p>
           <hr>
@@ -333,6 +378,63 @@
   </div>
 </div>
 
+<!-- Security Alarm Modal -->
+<div class="modal fade" id="alarmModal" tabindex="-1" aria-labelledby="alarmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="alarmModalLabel">Security Alarm Control</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <h4>Status: <span id="alarmStatus" class="text-warning">Disarmed</span></h4>
+          <button class="btn btn-danger m-2" id="armAlarm">Arm Alarm 🚨</button>
+          <button class="btn btn-secondary m-2" id="disarmAlarm">Disarm Alarm 📴</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Camera Modal -->
+<div class="modal fade" id="cameraModal" tabindex="-1" aria-labelledby="cameraModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cameraModalLabel">Camera Control</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Turn the camera <span id="cameraStatus">off</span>.</p>
+          <button id="toggleCameraBtn" class="btn btn-primary">Turn Camera On</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script>
+    // This function is now globally available 
+    function lockBedroom(action) {
+      fetch(`/lock-bedroom/${action}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message); 
+        // update status text if you like:
+        const status = document.getElementById('bedroom-lock-status');
+        if (status) status.textContent = action === 'lock' ? 'LOCKED' : 'UNLOCKED';
+      })
+      .catch(err => {
+        console.error('Error:', err);
+        alert('Failed to change bedroom lock state.');
+      });
+    }
+  </script>
+    
+
+  
 <!-- Scripts -->
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
